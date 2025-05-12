@@ -1,7 +1,7 @@
 -- MSSV: 23120264
 -- Họ tên: Nguyễn Phúc Hoàng
 -- Email: nphuchoang.itus@gmail.com
--- Ngày làm bài: 11/05/2025
+-- Ngày làm bài: 12/05/2025
 
 CREATE DATABASE QL_DATPHONG;
 GO
