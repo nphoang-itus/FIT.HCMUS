@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/app.dir/src/Circle.cpp.o CMakeFiles/app.dir/src/GeomatryFactory.cpp.o CMakeFiles/app.dir/src/GeometryManagement.cpp.o CMakeFiles/app.dir/src/Rectangle.cpp.o CMakeFiles/app.dir/src/RightTrapezoid.cpp.o CMakeFiles/app.dir/src/Triangle.cpp.o CMakeFiles/app.dir/src/main.cpp.o -o app

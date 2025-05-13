@@ -1,0 +1,3 @@
+/Users/nphoang/FITHCMUS/6-OOP/W08/BT04/build/CMakeFiles/app.dir
+/Users/nphoang/FITHCMUS/6-OOP/W08/BT04/build/CMakeFiles/edit_cache.dir
+/Users/nphoang/FITHCMUS/6-OOP/W08/BT04/build/CMakeFiles/rebuild_cache.dir
