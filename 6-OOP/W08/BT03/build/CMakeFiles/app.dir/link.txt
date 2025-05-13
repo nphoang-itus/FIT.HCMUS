@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/app.dir/src/Company.cpp.o CMakeFiles/app.dir/src/Employee.cpp.o CMakeFiles/app.dir/src/main.cpp.o -o app

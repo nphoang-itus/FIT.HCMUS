@@ -2,10 +2,9 @@
 -- Họ tên: Nguyễn Phúc Hoàng
 -- Email: nphuchoang.itus@gmail.com
 -- Ngày làm bài: 12/05/2025
-USE master
 
-USE DB_QLDeTai_23120264;
-GO
+-- USE DB_QLDeTai_23120264;
+-- GO
 
 -- Trigger 1: Tên đề tài phải duy nhất.
 /*
