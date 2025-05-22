@@ -1,8 +1,0 @@
-D C:
-  D Bai tap
-    F BT1.doc 123.456
-    D Bai tap C
-      F BT2.cpp 1.28
-      F BT2.xls 23.456
-  D Ly thuyet
-    F Ch1.ppt 34.567
