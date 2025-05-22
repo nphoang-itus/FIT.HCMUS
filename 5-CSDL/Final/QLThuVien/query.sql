@@ -465,15 +465,90 @@ HAVING COUNT(CS.MA_CUONSACH) >= ALL (
 -- ## 2. Truy Vấn với ALL/ANY
 
 -- 6. Tìm độc giả có số lần mượn sách nhiều hơn tất cả độc giả ở quận 'TD'.
-
+SELECT DG.ma_docgia, DG.ten
+FROM DOCGIA DG
+    JOIN QuaTrinhMuon QT ON QT.ma_docgia = DG.ma_docgia
+GROUP BY DG.ma_docgia, DG.ten
+HAVING COUNT(QT.MA_CUONSACH) >= ALL (
+    SELECT COUNT(QT2.MA_CUONSACH)
+    FROM QuaTrinhMuon QT2
+        JOIN DocGia DG2 ON DG2.ma_docgia = QT2.ma_docgia
+        LEFT JOIN NGUOILON NL ON NL.ma_docgia = DG2.ma_docgia
+        LEFT JOIN TREEM TE ON DG2.ma_docgia = TE.ma_docgia
+        LEFT JOIN NGUOILON BT ON BT.ma_docgia = TE.ma_docgia_nguoilon
+    WHERE NL.QUAN = 'TD' OR BT.quan = 'TD'
+    GROUP BY QT2.ma_docgia
+)
 
 -- 7. Cho biết tựa sách có số lượng cuốn sách ít hơn bất kỳ tựa sách nào của tác giả 'Jack London'.
+SELECT TS.ma_tuasach, TS.TuaSach, COUNT(CS.Ma_CuonSach) AS SLCUONSACH
+FROM DAUSACH DS
+    JOIN CUONSACH CS ON CS.ISBN = DS.ISBN
+    JOIN TUASACH TS ON TS.ma_tuasach = DS.ma_tuasach
+WHERE TS.tacgia != 'Jack London'
+GROUP BY TS.ma_tuasach, TS.TuaSach
+HAVING COUNT(CS.Ma_CuonSach) < ANY (
+    SELECT COUNT(CS2.MA_CUONSACH)
+    FROM CUONSACH CS2
+        JOIN DAUSACH DS2 ON DS2.ISBN = CS2.ISBN
+        JOIN TUASACH TS2 ON TS2.ma_tuasach = DS2.ma_tuasach
+    WHERE TS2.TACGIA = 'Jack London'
+    GROUP BY TS2.ma_tuasach
+)
 
 -- 8. Tìm độc giả trẻ em có tuổi lớn hơn tất cả độc giả trẻ em có người bảo trợ ở quận '2'.
+SELECT DG.ma_docgia, DG.ten, YEAR(GETDATE()) - YEAR(DG.NGAYSINH) AS TUOI
+FROM TREEM TE
+    JOIN DOCGIA DG ON TE.ma_docgia = DG.ma_docgia
+WHERE YEAR(GETDATE()) - YEAR(DG.NGAYSINH) >= ALL (
+    SELECT YEAR(GETDATE()) - YEAR(DG2.NGAYSINH)
+    FROM TREEM TE2
+        JOIN DOCGIA DG2 ON TE2.ma_docgia = DG2.ma_docgia
+        JOIN NGUOILON BT ON BT.ma_docgia = TE2.ma_docgia_nguoilon
+    WHERE BT.QUAN = '2'
+)
 
 -- 9. Cho biết đầu sách có thời gian mượn trung bình dài hơn bất kỳ đầu sách tiếng Anh nào.
+SELECT distinct qt.isbn, AVG(DATEDIFF(D, QT.ngayGio_muon, QT.ngayGio_tra)) as tbtgmuon
+FROM QUATRINHMUON QT
+GROUP BY qt.isbn
+HAVING AVG(DATEDIFF(D, QT.ngayGio_muon, QT.ngayGio_tra)) > ANY (
+    SELECT AVG(DATEDIFF(D, QT2.ngayGio_muon, QT2.ngayGio_tra))
+    FROM QuaTrinhMuon QT2
+        JOIN DAUSACH DS ON DS.ISBN = QT2.isbn
+    WHERE DS.ngonngu = 'Anh'
+    GROUP BY DS.isbn
+)
 
 -- 10. Tìm những cuốn sách chưa bao giờ được mượn trong khi tất cả cuốn sách khác của cùng đầu sách đã được mượn.
+SELECT CS.ISBN, CS.Ma_CuonSach
+FROM CUONSACH CS
+WHERE 
+    -- Điều kiện 1: Cuốn sách này chưa bao giờ được mượn
+    NOT EXISTS (
+        SELECT 1
+        FROM QUATRINHMUON QT
+        WHERE QT.ISBN = CS.ISBN AND QT.MA_CUONSACH = CS.Ma_CuonSach
+    )
+    -- Điều kiện 2: Có ít nhất 1 cuốn sách khác thuộc đầu sách này
+    AND EXISTS (
+        SELECT 1
+        FROM CUONSACH CS2
+        WHERE CS2.ISBN = CS.ISBN AND CS2.Ma_CuonSach != CS.Ma_CuonSach
+    )
+    -- Điều kiện 3: Tất cả các cuốn sách khác của cùng đầu sách đều đã được mượn
+    AND NOT EXISTS (
+        SELECT 1
+        FROM CUONSACH CS3
+        WHERE CS3.ISBN = CS.ISBN 
+          AND CS3.Ma_CuonSach != CS.Ma_CuonSach
+          AND NOT EXISTS (
+              SELECT 1
+              FROM QUATRINHMUON QT2
+              WHERE QT2.ISBN = CS3.ISBN AND QT2.MA_CUONSACH = CS3.Ma_CuonSach
+          )
+    )
+
 
 -- ## 3. Truy Vấn với EXISTS/NOT EXISTS
 
