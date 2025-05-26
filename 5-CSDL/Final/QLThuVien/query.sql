@@ -553,14 +553,49 @@ WHERE
 -- ## 3. Truy Vấn với EXISTS/NOT EXISTS
 
 -- 11. Cho biết tên độc giả chưa từng mượn sách nào.
+SELECT DG.ma_docgia, DG.ten
+FROM DOCGIA DG
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM QUATRINHMUON QT
+    WHERE QT.ma_docgia = DG.ma_docgia
+)
 
 -- 12. Tìm những tựa sách mà không có đầu sách nào bằng tiếng Việt.
+SELECT TS.ma_tuasach, TS.TuaSach
+FROM TUASACH TS
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM DAUSACH DS
+    WHERE DS.NGONNGU = N'Việt' AND TS.ma_tuasach = DS.ma_tuasach
+)
 
 -- 13. Cho biết những độc giả đã mượn sách nhưng chưa bao giờ trả muộn.
+SELECT DG.MA_DOCGIA, DG.TEN
+FROM DOCGIA DG
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM QUATRINHMUON QT
+    WHERE QT.ma_docgia = DG.ma_docgia AND QT.ngayGio_tra > QT.ngay_hethan
+)
 
 -- 14. Tìm những đầu sách có ít nhất một cuốn sách bị hư hỏng.
+SELECT DISTINCT CS.ISBN
+FROM CuonSach CS
+WHERE EXISTS (
+    SELECT 1
+    FROM CUONSACH CS2
+    WHERE CS2.TinhTrang = 'N' AND CS2.ISBN = CS.ISBN
+)
 
 -- 15. Cho biết những độc giả người lớn không có trẻ em nào được bảo trợ.
+SELECT NL.ma_docgia
+FROM NGUOILON NL
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM TREEM TE
+    WHERE TE.ma_docgia_nguoilon = NL.ma_docgia
+)
 
 -- 16. Tìm những tác giả có ít nhất một tựa sách chưa từng được mượn.
 
@@ -575,8 +610,34 @@ WHERE
 -- ## 4. Phép Chia (Relational Division) - Cách 1: NOT EXISTS
 
 -- 21. Tìm độc giả đã mượn tất cả các đầu sách của tác giả 'Jack London'.
+SELECT DG.ma_docgia, DG.ten
+FROM DOCGIA DG
+WHERE NOT EXISTS (
+    SELECT DS.ISBN
+    FROM DAUSACH DS JOIN TUASACH TS ON TS.ma_tuasach = DS.ma_tuasach
+    WHERE TS.tacgia = 'Jack London'
+
+    EXCEPT
+
+    SELECT QT.ISBN
+    FROM QUATRINHMUON QT
+    WHERE QT.ma_docgia = DG.ma_docgia
+)
 
 -- 22. Cho biết những độc giả đã mượn tất cả các đầu sách bằng tiếng Việt.
+SELECT DG.ma_docgia, DG.ten
+FROM DOCGIA DG
+WHERE NOT EXISTS (
+    SELECT DS.ISBN
+    FROM DauSach DS
+    WHERE DS.ngonngu = N'Việt'
+
+    EXCEPT
+
+    SELECT QT.ISBN
+    FROM QUATRINHMUON QT
+    WHERE QT.ma_docgia = DG.ma_docgia
+)
 
 -- 23. Tìm những quận có độc giả đã mượn tất cả các loại ngôn ngữ sách.
 
@@ -587,8 +648,30 @@ WHERE
 -- ## 5. Phép Chia - Cách 2: GROUP BY và HAVING
 
 -- 26. Tìm độc giả đã mượn tất cả các đầu sách của tác giả 'Chu Lai' (dùng GROUP BY).
+SELECT QT.ma_docgia
+FROM QUATRINHMUON QT
+    JOIN DAUSACH DS ON DS.ISBN = QT.ISBN
+    JOIN TUASACH TS ON TS.ma_tuasach = DS.ma_tuasach
+WHERE TS.tacgia = N'Chu Lai'
+GROUP BY QT.MA_DOCGIA
+HAVING COUNT(DISTINCT QT.ISBN) = (
+    SELECT COUNT(DS2.ISBN)
+    FROM DAUSACH DS2 JOIN TUASACH TS2 ON TS2.ma_tuasach = DS2.ma_tuasach
+    WHERE TS2.tacgia = N'Chu Lai'
+)
 
 -- 27. Cho biết những độc giả đã mượn tất cả các đầu sách tiếng Anh (dùng HAVING).
+SELECT DG.ma_docgia
+FROM DOCGIA DG
+    JOIN QUATRINHMUON QT ON QT.ma_docgia = DG.ma_docgia
+    JOIN DAUSACH DS ON DS.ISBN = QT.ISBN
+WHERE DS.NGONNGU = 'Anh'
+GROUP BY DG.ma_docgia
+HAVING COUNT(DISTINCT QT.ISBN) = (
+    SELECT COUNT(DS2.ISBN)
+    FROM DAUSACH DS2
+    WHERE DS2.NGONNGU = 'Anh'
+)
 
 -- 28. Tìm những quận có độc giả mượn đủ tất cả loại bìa sách (cứng và mềm).
 
@@ -623,10 +706,43 @@ WHERE
 -- ## 8. Truy Vấn Nâng Cao với Multiple Conditions
 
 -- 41. Tìm những độc giả đã mượn sách của tất cả tác giả có tên chứa từ 'Nguyễn'.
+SELECT DG.ma_docgia, DG.ten
+FROM DOCGIA DG
+WHERE NOT EXISTS (
+    SELECT TS.MA_TUASACH
+    FROM TUASACH TS
+    WHERE TS.tacgia LIKE N'%Nguyễn%'
+    EXCEPT
+    SELECT DS.MA_TUASACH
+    FROM DAUSACH DS
+        JOIN QUATRINHMUON QT ON QT.ISBN = DS.isbn
+    WHERE QT.ma_docgia = DG.ma_docgia
+)
 
 -- 42. Cho biết những tháng có tất cả các đầu sách tiếng Việt đều được mượn ít nhất một lần.
+-- 42. Cho biết những tháng có tất cả các đầu sách tiếng Việt đều được mượn ít nhất một lần.
+SELECT DISTINCT 
+    MONTH(QT.ngayGio_muon) AS THANG,
+    YEAR(QT.ngayGio_muon) AS NAM
+FROM QuaTrinhMuon QT
+WHERE NOT EXISTS (
+    -- Tìm đầu sách tiếng Việt chưa được mượn trong tháng này
+    SELECT DS.ISBN
+    FROM DAUSACH DS
+    WHERE DS.ngonngu = N'Việt'
+    
+    EXCEPT
+    
+    -- Tất cả đầu sách đã được mượn trong tháng/năm này
+    SELECT QT2.ISBN
+    FROM QUATRINHMUON QT2
+    WHERE MONTH(QT2.ngayGio_muon) = MONTH(QT.ngayGio_muon)
+      AND YEAR(QT2.ngayGio_muon) = YEAR(QT.ngayGio_muon)
+)
+ORDER BY NAM, THANG;
 
 -- 43. Tìm những độc giả đã mượn tất cả các đầu sách được xuất bản trong năm có nhiều đầu sách nhất.
+
 
 -- 44. Cho biết những quận có độc giả đã mượn tất cả các loại sách (theo ngôn ngữ) có trong thư viện.
 
