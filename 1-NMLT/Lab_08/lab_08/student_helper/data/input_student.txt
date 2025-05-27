@@ -1,0 +1,10 @@
+Nguyen Van A, 123456, 8.0
+Nguyen Van B, 123457, 8.1
+Nguyen Van C, 123458, 8.2
+Nguyen Van D, 123459, 8.3
+Nguyen Van E, 123460, 8.4
+Nguyen Van F, 123461, 8.5
+Nguyen Van G, 123462, 8.6
+Nguyen Van H, 123463, 8.7
+Nguyen Van I, 123464, 8.8
+Nguyen Van J, 123465, 8.9
