@@ -1,0 +1,10 @@
+2
+3
+Restaurant A,8.0,9.0,7.0,6.0
+Restaurant B,5.5,6.0,7.5,7.5
+Restaurant C,6.0,5.0,6.0,7.5
+4
+Restaurant A,8.0,9.0,7.0,6.0
+Restaurant B,5.5,6.0,7.5,7.5
+Restaurant C,6.0,5.0,9.0,7.5
+Restaurant D,6.0,7.5,8.5,9.5

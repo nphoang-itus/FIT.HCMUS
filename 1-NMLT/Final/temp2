@@ -1,0 +1,109 @@
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+
+#include "restaurant_utils.h"
+
+using namespace std;
+
+// TODO
+void parseRestaurantLine(const string& line, string& name, float scores[MAX_DISHES]) {
+    int pos = 0;
+    int commaPos = line.find(',');
+    name = line.substr(0, commaPos);
+    pos = commaPos + 1;
+    
+    for (int i = 0; i < MAX_DISHES; i++) {
+        commaPos = line.find(',', pos);
+        if (commaPos == string::npos) {
+            scores[i] = stof(line.substr(pos));
+            break;
+        } else {
+            scores[i] = stof(line.substr(pos, commaPos - pos));
+            pos = commaPos + 1;
+        }
+    }
+}
+
+bool isUniqueMaxInRow(float arr2d[MAX_RESTAURANTS][MAX_DISHES], int row, int col, int numDishes) {
+    float maxVal = arr2d[row][col];
+    int count = 0;
+    for (int j = 0; j < numDishes; j++) {
+        if (arr2d[row][j] == maxVal) count++;
+    }
+    return count == 1;
+}
+
+bool isUniqueMaxInCol(float arr2d[MAX_RESTAURANTS][MAX_DISHES], int row, int col, int numRestaurants) {
+    float maxVal = arr2d[row][col];
+    int count = 0;
+    for (int i = 0; i < numRestaurants; i++) {
+        if (arr2d[i][col] == maxVal) count++;
+    }
+    return count == 1;
+}
+
+bool isMaxInRow(float arr2d[MAX_RESTAURANTS][MAX_DISHES], int row, int col, int numDishes) {
+    float val = arr2d[row][col];
+    for (int j = 0; j < numDishes; j++) {
+        if (arr2d[row][j] > val) return false;
+    }
+    return true;
+}
+
+bool isMaxInCol(float arr2d[MAX_RESTAURANTS][MAX_DISHES], int row, int col, int numRestaurants) {
+    float val = arr2d[row][col];
+    for (int i = 0; i < numRestaurants; i++) {
+        if (arr2d[i][col] > val) return false;
+    }
+    return true;
+}
+// END TODO
+
+void find_quality_restaurants(string input_file_name, string output_file_name) {
+    // TODO
+    ifstream inFile(input_file_name);
+    ofstream outFile(output_file_name);
+    
+    if (!inFile.is_open() || !outFile.is_open()) {
+        cerr << "Can't open file!" << endl;
+        return;
+    }
+    
+    int numTestCases;
+    inFile >> numTestCases;
+    inFile.ignore();
+    
+    for (int t = 0; t < numTestCases; t++) {
+        int numRestaurants;
+        inFile >> numRestaurants;
+        inFile.ignore();
+        
+        float arr2d[MAX_RESTAURANTS][MAX_DISHES];
+        string restaurantNames[MAX_RESTAURANTS];
+        
+        for (int i = 0; i < numRestaurants; i++) {
+            string line;
+            getline(inFile, line);
+            parseRestaurantLine(line, restaurantNames[i], arr2d[i]);
+        }
+        
+        for (int i = 0; i < numRestaurants; i++) {
+            for (int j = 0; j < MAX_DISHES; j++) {
+                if
+                (isMaxInRow(arr2d, i, j, MAX_DISHES)
+                && isMaxInCol(arr2d, i, j, numRestaurants)
+                && isUniqueMaxInRow(arr2d, i, j, MAX_DISHES)
+                && isUniqueMaxInCol(arr2d, i, j, numRestaurants))
+                {
+                    outFile << restaurantNames[i] << "," << fixed << setprecision(1) << arr2d[i][j] << endl;
+                }
+            }
+        }
+    }
+    
+    inFile.close();
+    outFile.close();
+    // END TODO
+}

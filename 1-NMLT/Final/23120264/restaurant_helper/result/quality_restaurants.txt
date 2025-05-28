@@ -1,0 +1,4 @@
+Restaurant A,9
+Restaurant A,9
+Restaurant C,9
+Restaurant D,9.5
