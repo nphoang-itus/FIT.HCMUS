@@ -1,0 +1,6 @@
+[Project] ID: P001, Desc: Backend Development Total Hours: 33
+  [Task] ID: T003, Desc: Setup Database, Hours 4
+  [Task] ID: T004, Desc: Implement API Endpoints, Hours 16
+  [Project] ID: P002, Desc: Payment Gateway Integration Total Hours: 13
+    [Task] ID: T005, Desc: Research Payment APIs, Hours 3
+    [Task] ID: T006, Desc: Implement Stripe Integration, Hours 10
