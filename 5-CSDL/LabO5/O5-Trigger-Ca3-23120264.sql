@@ -140,7 +140,7 @@ GO
         T: -
         X: +
         S: MAGV
-    }
+}
 */
 
 CREATE OR ALTER TRIGGER tg_23120264_R4
