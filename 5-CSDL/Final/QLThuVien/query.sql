@@ -747,3 +747,11 @@ ORDER BY NAM, THANG;
 -- 44. Cho biết những quận có độc giả đã mượn tất cả các loại sách (theo ngôn ngữ) có trong thư viện.
 
 -- 45. Tìm những độc giả đã trả đúng hạn tất cả các lần mượn sách trong năm 2013.
+
+for (i = 0, i < num_rows(giangvien), ++i) {
+    for (j = 0, j < num_rows(thamgiadt), ++j) {
+        if (giangvien.magv[i] == thamgiadt.magv[j]) {
+            return true;
+        }
+    }
+}
