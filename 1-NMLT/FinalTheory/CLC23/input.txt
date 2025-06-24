@@ -1,0 +1,5 @@
+Ma don hang|Ten nguoi nhan|Dia chi|So dien thoai| Khoi luong
+59392159392159392|Nguyen Teo|28, Le Duan, Ben Nghe, Q1|0909001001|0.3
+58423158423158423|Tran Ty|34, Vo Van Tan, P5, Q3|0908123123|1.2
+58522258522258522|Le Meo|220, Nguyen Xi, P26, Binh Thanh|0978123456|0.9
+59283159283159283|Ly Suu|40, Bach Dang, P24, Binh Thanh|0962456567|0.5
