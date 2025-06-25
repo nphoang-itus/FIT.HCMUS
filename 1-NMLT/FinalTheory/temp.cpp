@@ -1,14 +1,19 @@
 #include <iostream>
-#include <fstream>
 
 int main() {
-    std::ifstream ifs("input.txt");
-    int n;
-    std::string s;
-    ifs >> n;
-    ifs.ignore();
-    ifs >> s;
-    std::cout << n << " " << s << "\n";
-
+    int x = 5;
+    
+    if (x > 0) {
+        goto positive;
+    }
+    
+    std::cout << "Number is not positive" << std::endl;
+    goto end;
+    
+positive:
+    std::cout << "Number is positive" << std::endl;
+    
+end:
+    std::cout << "Program ends" << std::endl;
     return 0;
 }
