@@ -65,6 +65,8 @@ public:
         );
     }
 
+    virtual int numOfEmp() const = 0;
+
     friend std::ostream& operator<<(std::ostream& os, const Employee& e) {
         os << e.toString();
         return os;
@@ -79,6 +81,7 @@ public:
 class Manager : public Employee {
 private:
     float _baseSalary = 0.0f;
+    std::vector<Employee*> list;
 
     void input(std::istream& is, Employee& e) override {
         Employee::input(is, e);
@@ -116,6 +119,14 @@ public:
             "{},baseSalary=\"{}\"",
             _type, Employee::toString(), _baseSalary
         );
+    }
+
+    int numOfEmp() const override {
+        int n = 0;
+        for (const auto& e : list) {
+            n += e->numOfEmp();
+        }
+        return n;
     }
 };
 
@@ -176,6 +187,10 @@ public:
             Employee::toString(), _baseSalary, _overtime
         );
     }
+
+    int numOfEmp() const override {
+        return 1;
+    }
 };
 
 class Designer : public Employee {
@@ -235,6 +250,10 @@ public:
             Employee::toString(), _baseSalary, _bonus
         );
     }
+
+    int numOfEmp() const override {
+        return 1;
+    }
 };
 
 class Tester : public Employee {
@@ -293,6 +312,10 @@ public:
             "{},baseSalary=\"{}\",error=\"{}\"",
             Employee::toString(), _baseSalary, _error
         );
+    }
+
+    int numOfEmp() const override {
+        return 1;
     }
 };
 
