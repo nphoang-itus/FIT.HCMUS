@@ -11,6 +11,14 @@ private:
     std::string manufacturingDate;
 
 public:
+    Mobile() {
+        std::cout << "Mobile::Mobile()";
+    }
+
+    Mobile(std::string a, std::string b, std::string c, std::string d) {
+        std::cout << Mobile
+    }
+
     friend std::istream& operator>>(std::istream& is, Mobile& mobile) {
         // nhập theo định dạng có delim '|' ngăn cách giữa các trường
         std::string line = "";
