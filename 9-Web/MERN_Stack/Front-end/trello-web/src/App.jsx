@@ -84,7 +84,6 @@ function App() {
 
   return (
     <>
-      <img src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.15752-9/541255655_688686454231925_5442968848352241277_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=0024fc&_nc_ohc=8qMd-WBRB9kQ7kNvwGK8gmb&_nc_oc=AdmZEu6jpYl5TzBKbwvEmwdKfZzIRNNKRLx3f369S-GAK_VXyYkiy6pwRtXfVobr9Ws&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fsgn2-5.fna&oh=03_Q7cD3QHZjGmgjhsDZ6uCNPiNI_DCmQ1Ao7SQ_w26_4cpisqiZg&oe=68E22E2A" alt="" />
       <ModeSelect />
 
       <hr />

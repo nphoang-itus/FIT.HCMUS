@@ -1,0 +1,15 @@
+Z:\FITHCMUS\11-CSharp\23120264\bin\Debug\net8.0\23120264.exe
+Z:\FITHCMUS\11-CSharp\23120264\bin\Debug\net8.0\23120264.deps.json
+Z:\FITHCMUS\11-CSharp\23120264\bin\Debug\net8.0\23120264.runtimeconfig.json
+Z:\FITHCMUS\11-CSharp\23120264\bin\Debug\net8.0\23120264.dll
+Z:\FITHCMUS\11-CSharp\23120264\bin\Debug\net8.0\23120264.pdb
+Z:\FITHCMUS\11-CSharp\23120264\obj\Debug\net8.0\23120264.GeneratedMSBuildEditorConfig.editorconfig
+Z:\FITHCMUS\11-CSharp\23120264\obj\Debug\net8.0\23120264.AssemblyInfoInputs.cache
+Z:\FITHCMUS\11-CSharp\23120264\obj\Debug\net8.0\23120264.AssemblyInfo.cs
+Z:\FITHCMUS\11-CSharp\23120264\obj\Debug\net8.0\23120264.csproj.CoreCompileInputs.cache
+Z:\FITHCMUS\11-CSharp\23120264\obj\Debug\net8.0\23120264.sourcelink.json
+Z:\FITHCMUS\11-CSharp\23120264\obj\Debug\net8.0\23120264.dll
+Z:\FITHCMUS\11-CSharp\23120264\obj\Debug\net8.0\refint\23120264.dll
+Z:\FITHCMUS\11-CSharp\23120264\obj\Debug\net8.0\23120264.pdb
+Z:\FITHCMUS\11-CSharp\23120264\obj\Debug\net8.0\23120264.genruntimeconfig.cache
+Z:\FITHCMUS\11-CSharp\23120264\obj\Debug\net8.0\ref\23120264.dll
