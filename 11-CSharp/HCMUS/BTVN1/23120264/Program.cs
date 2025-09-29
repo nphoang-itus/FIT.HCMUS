@@ -7,10 +7,10 @@ namespace EmailPuzzleGame
     public class EmailPuzzle
     {
         // Email bị ẩn
-        private readonly char[] hiddenEmail = "_phuchoang__tus@gmail.com".ToCharArray();
+        private char[] hiddenEmail = "_phuchoang__tus@gmail.com".ToCharArray();
 
         // Danh sách câu hỏi + vị trí ký tự cần lấy (0-based index)
-        private readonly List<(string question, int charIndex)> questions = new List<(string, int)>
+        private List<(string question, int charIndex)> questions = new List<(string, int)>
         {
             (
                 "Câu 1: Trong OOP, tính chất nào cho phép một lớp mới có thể tái sử dụng thuộc tính và phương thức của lớp cũ?\n" +
@@ -57,9 +57,8 @@ namespace EmailPuzzleGame
             }
 
             string finalEmail = BuildEmail(extractedChars);
-            bool isCorrect = CheckCorrectness(finalEmail);
 
-            ShowResult(finalEmail, isCorrect);
+            ShowResult(finalEmail);
         }
 
         private void ShowIntro()
@@ -104,33 +103,14 @@ namespace EmailPuzzleGame
             return new string(emailCopy);
         }
 
-        private bool CheckCorrectness(string finalEmail)
-        {
-            return finalEmail == "nphuchoang.itus@gmail.com";
-        }
-
-        private void ShowResult(string email, bool isCorrect)
+        private void ShowResult(string email)
         {
             Console.WriteLine("\n============================================================");
             Console.WriteLine("                        KẾT QUẢ");
             Console.WriteLine("============================================================");
-
-            if (isCorrect)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Chúc mừng! Email chính xác là: {email}");
-                Console.ResetColor();
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"Email bạn tạo ra là: {email}");
-                Console.ResetColor();
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Có vẻ bạn đã nhập sai một hoặc nhiều đáp án.");
-                Console.ResetColor();
-            }
-
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Hãy gửi lời mời tới: {email}");
+            Console.ResetColor();
             Console.WriteLine("------------------------------------------------------------");
         }
     }

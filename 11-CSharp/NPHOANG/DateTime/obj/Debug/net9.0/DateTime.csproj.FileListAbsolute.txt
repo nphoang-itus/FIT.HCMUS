@@ -1,0 +1,15 @@
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/obj/Debug/net9.0/DateTime.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/obj/Debug/net9.0/DateTime.AssemblyInfoInputs.cache
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/obj/Debug/net9.0/DateTime.AssemblyInfo.cs
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/obj/Debug/net9.0/DateTime.csproj.CoreCompileInputs.cache
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/obj/Debug/net9.0/DateTime.sourcelink.json
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/bin/Debug/net9.0/DateTime
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/bin/Debug/net9.0/DateTime.deps.json
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/bin/Debug/net9.0/DateTime.runtimeconfig.json
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/bin/Debug/net9.0/DateTime.dll
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/bin/Debug/net9.0/DateTime.pdb
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/obj/Debug/net9.0/DateTime.dll
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/obj/Debug/net9.0/refint/DateTime.dll
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/obj/Debug/net9.0/DateTime.pdb
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/obj/Debug/net9.0/DateTime.genruntimeconfig.cache
+/Users/nphoang/FITHCMUS/11-CSharp/DateTime/obj/Debug/net9.0/ref/DateTime.dll

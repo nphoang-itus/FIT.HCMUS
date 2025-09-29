@@ -1,24 +1,7 @@
-#countLabel {
-  display: block;
-  text-align: center;
-  font-size: 10em;
-  font-family: Helvetica, sans-serif;
+body {
+  font-size: 3em;
 }
 
-#btnContainer {
-  text-align: center;
-}
-
-.buttons {
-  padding: 10px 20px;
-  font-size: 1.5em;
-  color: white;
-  background-color: blue;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.5s;
-}
-
-.buttons:hover {
-  background-color: brown;
+#myInput {
+  padding: 12px;
 }
