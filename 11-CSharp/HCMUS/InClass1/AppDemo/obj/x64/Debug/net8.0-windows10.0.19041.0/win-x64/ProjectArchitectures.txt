@@ -1,0 +1,1 @@
+Z:\FITHCMUS\11-CSharp\HCMUS\InClass1\AppDemo\AppDemo.csproj;x64

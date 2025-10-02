@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/nphoang/FITHCMUS/11-CSharp/HCMUS/BTVN2/23120264/23120264.csproj": {}
+    "/Users/nphoang/FITHCMUS/11-CSharp/HCMUS/BTVN2/23120264/sources/23120264.csproj": {}
   },
   "projects": {
-    "/Users/nphoang/FITHCMUS/11-CSharp/HCMUS/BTVN2/23120264/23120264.csproj": {
+    "/Users/nphoang/FITHCMUS/11-CSharp/HCMUS/BTVN2/23120264/sources/23120264.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nphoang/FITHCMUS/11-CSharp/HCMUS/BTVN2/23120264/23120264.csproj",
+        "projectUniqueName": "/Users/nphoang/FITHCMUS/11-CSharp/HCMUS/BTVN2/23120264/sources/23120264.csproj",
         "projectName": "23120264",
-        "projectPath": "/Users/nphoang/FITHCMUS/11-CSharp/HCMUS/BTVN2/23120264/23120264.csproj",
+        "projectPath": "/Users/nphoang/FITHCMUS/11-CSharp/HCMUS/BTVN2/23120264/sources/23120264.csproj",
         "packagesPath": "/Users/nphoang/.nuget/packages/",
-        "outputPath": "/Users/nphoang/FITHCMUS/11-CSharp/HCMUS/BTVN2/23120264/obj/",
+        "outputPath": "/Users/nphoang/FITHCMUS/11-CSharp/HCMUS/BTVN2/23120264/sources/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/nphoang/.nuget/NuGet/NuGet.Config"
