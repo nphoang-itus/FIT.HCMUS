@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/nphoang/FITHCMUS/11-CSharp/DateTime/DateTime.csproj": {}
+    "/Users/nphoang/FITHCMUS/11-CSharp/NPHOANG/DateTime/DateTime.csproj": {}
   },
   "projects": {
-    "/Users/nphoang/FITHCMUS/11-CSharp/DateTime/DateTime.csproj": {
+    "/Users/nphoang/FITHCMUS/11-CSharp/NPHOANG/DateTime/DateTime.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nphoang/FITHCMUS/11-CSharp/DateTime/DateTime.csproj",
+        "projectUniqueName": "/Users/nphoang/FITHCMUS/11-CSharp/NPHOANG/DateTime/DateTime.csproj",
         "projectName": "DateTime",
-        "projectPath": "/Users/nphoang/FITHCMUS/11-CSharp/DateTime/DateTime.csproj",
+        "projectPath": "/Users/nphoang/FITHCMUS/11-CSharp/NPHOANG/DateTime/DateTime.csproj",
         "packagesPath": "/Users/nphoang/.nuget/packages/",
-        "outputPath": "/Users/nphoang/FITHCMUS/11-CSharp/DateTime/obj/",
+        "outputPath": "/Users/nphoang/FITHCMUS/11-CSharp/NPHOANG/DateTime/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/nphoang/.nuget/NuGet/NuGet.Config"

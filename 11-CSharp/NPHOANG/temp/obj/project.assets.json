@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nphoang/FITHCMUS/11-CSharp/temp/temp.csproj",
+      "projectUniqueName": "/Users/nphoang/FITHCMUS/11-CSharp/NPHOANG/temp/temp.csproj",
       "projectName": "temp",
-      "projectPath": "/Users/nphoang/FITHCMUS/11-CSharp/temp/temp.csproj",
+      "projectPath": "/Users/nphoang/FITHCMUS/11-CSharp/NPHOANG/temp/temp.csproj",
       "packagesPath": "/Users/nphoang/.nuget/packages/",
-      "outputPath": "/Users/nphoang/FITHCMUS/11-CSharp/temp/obj/",
+      "outputPath": "/Users/nphoang/FITHCMUS/11-CSharp/NPHOANG/temp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/nphoang/.nuget/NuGet/NuGet.Config"
